@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Cantina Bella Vista — Avalie sua experiência</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23066AFF'/%3E%3Cpolygon points='12,3 14.6,8.9 21,9.6 16.2,13.9 17.6,20.2 12,16.9 6.4,20.2 7.8,13.9 3,9.6 9.4,8.9' fill='%23F5B301' transform='translate(3.6 3.6) scale(.7)'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--sf:#F7F8FA;--ink:#12151C;--mut:#5B6270;--ln:#E7E9EE;--br:#066AFF;--brs:#EEF4FF;--star:#F5A524;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--sf);color:var(--ink);font:400 16px/1.5 "Code Pro",Urbanist,system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+display:flex;align-items:center;justify-content:center;padding:20px 16px;overflow-x:hidden}
+:focus-visible{outline:2px solid var(--br);outline-offset:3px;border-radius:8px}
+.wrap{width:100%;max-width:440px}
+.foot{text-align:center;margin-top:16px;font-size:11.5px;color:var(--mut)}
+.foot a{color:var(--br);text-decoration:none;font-weight:700}
+</style>
+</head><body>
+<div class="wrap"><div class="rcard live" id="rv" aria-live="polite"></div><p class="foot">Página de demonstração feita com <a href="../" target="_top">reviu</a></p></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="st" viewBox="0 0 24 24"><polygon points="12,2 14.9,8.6 22,9.3 16.6,14 18.2,21 12,17.3 5.8,21 7.4,14 2,9.3 9.1,8.6"/></symbol>
+<symbol id="ck" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+</defs></svg>
+<style>
+/*RV*/
+.rcard{--rc:var(--br);--rct:color-mix(in srgb,var(--rc) 12%,#fff);width:100%;max-width:400px;margin-inline:auto;background:#fff;border-radius:28px;padding:34px 28px 28px;text-align:center;border:1px solid var(--ln);box-shadow:0 26px 64px -32px rgba(18,21,28,.22);display:flex;flex-direction:column;color:var(--ink)}
+.rcard.live{min-height:560px}
+.rcard .rb{width:60px;height:60px;border-radius:50%;background-color:var(--rc);background-size:cover;background-position:center;color:#fff;display:grid;place-items:center;margin:0 auto 14px;font-size:20px;font-weight:700;flex:none}
+.rcard .bn{font-size:21px;font-weight:700;margin-bottom:4px;line-height:1.2}
+.rcard .loc{font-size:13.5px;color:var(--mut);display:flex;gap:6px;align-items:center;justify-content:center}
+.rcard .loc svg{width:14px;height:14px;flex:none}
+.rcard hr{border:0;border-top:1px solid var(--ln);margin:18px 0 0;width:100%}
+.rcard .wrow{display:flex;align-items:center;gap:14px;padding:16px 0;text-align:left}
+.rcard .wp{width:44px;height:44px;border-radius:50%;background-size:cover;background-position:center;display:grid;place-items:center;flex:none;font-weight:700;font-size:14px;color:#fff}
+.rcard .wrow small{display:block;font-size:11px;letter-spacing:.08em;color:var(--mut);text-transform:uppercase;font-weight:600}
+.rcard .wrow b{font-size:16px;font-weight:700}
+.rcard .q{font-size:22px;line-height:1.3;font-weight:700;margin:14px 0 24px;letter-spacing:-.01em}
+.rcard .sub{color:var(--mut);font-size:13.5px;margin:0 0 14px}
+.rcard .sub b{color:var(--ink)}
+.rcard .pgs{display:grid;gap:5px;margin:20px 0 4px}
+.rcard .pgs i{height:4px;border-radius:4px;background:var(--ln)}.rcard .pgs i.on{background:var(--rc)}
+.rcard .qn{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:600;margin-top:14px}
+.rcard .bigstars{display:flex;justify-content:center;gap:6px}
+.rcard .bigstars button{background:none;border:0;padding:2px;cursor:pointer;color:var(--rc);min-width:46px;min-height:46px;display:grid;place-items:center;transition:transform .15s}
+.rcard .bigstars button:hover{transform:scale(1.1)}
+.rcard .rlab{font-size:14px;color:var(--mut);min-height:22px;margin:10px 0 0}
+.rcard .tgs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px}
+.rcard .tgs button{font:inherit;font-size:13px;min-height:38px;padding:0 16px;border:1px solid var(--ln);border-radius:99px;background:#fff;color:var(--mut);cursor:pointer}
+.rcard .tgs button[aria-pressed=true]{background:var(--rct);border-color:var(--rc);color:var(--rc)}
+.rcard textarea{width:100%;min-height:92px;border:1px solid var(--ln);border-radius:12px;padding:12px;font:inherit;font-size:13.5px;margin-top:8px;resize:vertical;text-align:left;color:var(--ink)}
+.rcard textarea:focus{outline:0;border-color:var(--rc);box-shadow:0 0 0 3px var(--rct)}
+.rcard .crow{display:flex;justify-content:space-between;align-items:center;margin:6px 0 0}
+.rcard .crow .cpst{margin:0;font-size:12.5px;color:var(--rc);font-weight:600}
+.rcard .crow .lk{padding:4px 0}
+.rcard .tip{font-size:12.5px;color:var(--mut);margin:8px 0 6px;line-height:1.5}
+.rcard .lk{background:none;border:0;color:var(--mut);font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:8px;align-self:center}
+.rcard .go{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:14px;padding:0 20px;border-radius:99px;border:1px solid var(--rc);background:var(--rc);color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.rcard .go.gho{background:#fff;color:var(--ink);border-color:var(--ln)}
+.rcard .pw{font-size:11px;color:var(--mut);margin:auto 0 0;padding-top:18px}
+.rcard .ok{margin:auto 0;padding:10px 0}
+.rcard .ok .ck{width:56px;height:56px;border-radius:50%;background:var(--rct);color:var(--rc);display:grid;place-items:center;margin:0 auto 16px;font-size:24px;font-weight:700}
+@media(max-width:420px){.rcard{padding:26px 20px 22px}.rcard .q{font-size:20px}}
+</style>
+<script>
+function Review(el,cfg){
+const L=['Ruim','Regular','Bom','Muito bom','Excelente'];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=v=>v.toFixed(1).replace('.',',');
+const star=f=>`<svg viewBox="0 0 24 24" width="34" height="34" fill="${f?'currentColor':'none'}" stroke="currentColor" stroke-width="1.6"><use href="#st"/></svg>`;
+const pin='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/></svg>';
+let s,lock=false,tok=0;
+async function copyText(t){
+try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t);return true}}catch(e){}
+try{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.focus();ta.select();const ok=document.execCommand('copy');document.body.removeChild(ta);return ok}catch(e){return false}}
+function reset(){tok++;lock=false;s={stage:'q',i:0,rt:[],t:[],c:'',msg:'',avg:0,ok:undefined,plat:'',kind:''};draw()}
+const avg=()=>s.rt.reduce((a,b)=>a+b,0)/s.rt.length;
+function hdr(){const b=cfg.biz(),w=cfg.waiter();
+return `<div class="rb" ${b.photo?`style="background-image:url(${b.photo})"`:''}>${b.photo?'':esc(b.logo)}</div><div class="bn">${esc(b.name)}</div><div class="loc">${pin}${esc(b.addr)}</div><hr>
+<div class="wrow"><div class="wp" style="${w.photo?`background-image:url(${w.photo})`:`background-color:${w.c}`}">${w.photo?'':esc(w.i)}</div><div><small>Atendimento${w.mesa?' · Mesa '+esc(w.mesa):''}</small><b>${esc(w.n)}</b></div></div><hr>`}
+function build(){const Q=cfg.questions(),b=cfg.biz(),w=cfg.waiter();
+const good=Q.map((q,i)=>({p:q.p,r:s.rt[i]})).filter(x=>x.r>=4&&x.p).sort((a,b)=>b.r-a.r).slice(0,3).map(x=>x.p);
+let body=!good.length?'Tudo muito bom':good.length===1?good[0]:good.slice(0,-1).join(', ')+' e '+good[good.length-1];
+body=body[0].toUpperCase()+body.slice(1);
+return `Experiência excelente na ${b.name}! ${body}. Atendimento especial de ${w.n.split(' ')[0]}. Recomendo!`}
+function finish(){s.avg=avg();if(s.avg>=4.5){s.stage='pub';s.msg=build();copyText(s.msg).then(ok=>{s.ok=ok;const e=el.querySelector('.cpst');if(e&&s.stage==='pub')e.textContent=ok?'✓ Copiado':'Toque em Copiar'})}else s.stage='priv'}
+function draw(){const Q=cfg.questions(),N=Q.length;
+if(!N){el.innerHTML='<p class="sub" style="margin:auto">Nenhuma pergunta ativa.</p>';return}
+if(s.stage==='q'&&s.i>=N)s.i=N-1;
+let h=hdr();
+if(s.stage==='q'){const i=s.i,r=s.rt[i]||0;
+h+=`<div class="pgs" style="grid-template-columns:repeat(${N},1fr)">${Q.map((_,k)=>`<i class="${k<=i?'on':''}"></i>`).join('')}</div><div class="qn">Pergunta ${i+1} de ${N}</div><h1 class="q">${esc(Q[i].t)}</h1><div class="bigstars">${[1,2,3,4,5].map(n=>`<button data-r="${n}" aria-label="${n} de 5 estrelas">${star(n<=r)}</button>`).join('')}</div><div class="rlab">${r?L[r-1]:'Toque numa estrela'}</div>${i>0?'<button class="lk" data-act="back">← Voltar</button>':''}<p class="pw">Powered by <b style="color:var(--rc)">reviu</b></p>`}
+else if(s.stage==='pub'){const P=cfg.platforms(),pn=P.map(p=>p.name);
+h+=`<h1 class="q" style="margin:20px 0 6px">Que bom que você gostou!</h1><p class="sub">Sua média foi <b>${fmt(s.avg)}</b>. Preparamos um comentário para você — é só colar.</p><textarea id="msg" aria-label="Comentário sugerido">${esc(s.msg)}</textarea><div class="crow"><span class="cpst">${s.ok===undefined?'Copiando…':s.ok?'✓ Copiado':'Toque em Copiar'}</span><button class="lk" data-act="copy">Copiar de novo</button></div><p class="tip">Já está na sua área de transferência. ${pn.length?`Na página do ${esc(pn.join(' ou '))}, cole`:'É só colar'}, edite se quiser ou escreva o seu.</p>
+${P.length?P.map((p,k)=>`<button class="go ${k?'gho':''}" data-act="plat" data-p="${esc(p.name)}">Abrir ${esc(p.name)}</button>`).join(''):'<button class="go" data-act="plat" data-p="">Concluir</button>'}<button class="lk" data-act="skip">Agora não</button>`}
+else if(s.stage==='priv'){const Qr=Q.map((q,i)=>({q:q.q,r:s.rt[i]}));
+let low=Qr.filter(x=>x.r<=3);if(!low.length)low=Qr.filter(x=>x.r<=4);if(!low.length)low=Qr;
+h+=`<h1 class="q" style="margin:20px 0 6px">O que podemos melhorar?</h1><p class="sub">Seu relato será enviado diretamente ao dono, para resolver de forma mais rápida e detalhada.</p><div class="tgs">${low.map(x=>`<button aria-pressed="${s.t.includes(x.q)}" data-t="${esc(x.q)}">${esc(x.q)}</button>`).join('')}</div><textarea id="cm" placeholder="Conte o que aconteceu (opcional)">${esc(s.c)}</textarea><button class="go" data-act="send">Enviar ao dono</button>`}
+else{const b=cfg.biz();const ck='<div class="ck">✓</div>';
+h+=s.kind==='pub'?`<div class="ok">${ck}<h1 class="q" style="margin:0 0 6px">Tudo certo!</h1><p class="sub">Agora é só colar no ${esc(s.plat||'Google')} e publicar. Obrigado por ajudar a ${esc(b.name)}.</p><button class="lk" data-act="restart">Refazer o Review</button></div>`:s.kind==='skip'?`<div class="ok">${ck}<h1 class="q" style="margin:0 0 6px">Obrigado pelo carinho!</h1><p class="sub">Sua avaliação foi registrada. Esperamos ver você de novo na ${esc(b.name)}.</p><button class="lk" data-act="restart">Refazer o Review</button></div>`:`<div class="ok">${ck}<h1 class="q" style="margin:0 0 6px">Obrigado por nos contar!</h1><p class="sub">Seu relato foi enviado diretamente ao dono da ${esc(b.name)}, que vai cuidar disso para resolver da forma mais rápida e detalhada.</p><button class="lk" data-act="restart">Refazer o Review</button></div>`}
+el.innerHTML=h}
+el.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+if(b.dataset.r){if(lock)return;const i=s.i;s.rt[i]=+b.dataset.r;lock=true;const my=tok;draw();
+setTimeout(()=>{if(my!==tok)return;lock=false;if(i<cfg.questions().length-1)s.i=i+1;else finish();draw()},380);return}
+if(b.dataset.t){const k=s.t.indexOf(b.dataset.t);k<0?s.t.push(b.dataset.t):s.t.splice(k,1);const c=el.querySelector('#cm');if(c)s.c=c.value;draw();return}
+const a=b.dataset.act,ta=el.querySelector('#msg'),cm=el.querySelector('#cm');
+if(a==='back'){s.i=Math.max(0,s.i-1);draw()}
+else if(a==='copy'){copyText(ta.value).then(ok=>{const c=el.querySelector('.cpst');c.textContent=ok?'✓ Copiado':'Selecione o texto e copie'})}
+else if(a==='plat'){s.msg=ta.value;s.plat=b.dataset.p;s.kind='pub';const pf=cfg.platforms().find(x=>x.name===s.plat);cfg.onFinish({kind:'pub',avg:s.avg,text:s.msg,platform:s.plat});if(pf&&pf.url){try{window.open(pf.url,'_blank','noopener')}catch(e){}}s.stage='done';draw()}
+else if(a==='skip'){s.kind='skip';cfg.onFinish({kind:'priv',avg:s.avg,text:'Avaliação positiva, sem comentário público.'});s.stage='done';draw()}
+else if(a==='send'){s.c=cm.value;s.kind='priv';cfg.onFinish({kind:'priv',avg:s.avg,text:s.c.trim()||('Pontos citados: '+(s.t.join(', ')||'nenhum'))});s.stage='done';draw()}
+else if(a==='restart'){reset()}});
+reset();
+return {reset,draw}}
+</script>
+<script>
+/* ---- dados de demonstração (sem backend: vive só nesta página) ---- */
+const BIZ={name:'Cantina Bella Vista',addr:'Rua das Flores, 120 · Centro',logo:'CB',photo:null,color:'#066AFF'};
+const WAITERS=[
+{code:'RM-4821',i:'RM',c:'#0E8F6B',n:'Rafael M.',mesas:['09','10','11','12']},
+{code:'CS-1937',i:'CS',c:'#D9622B',n:'Camila S.',mesas:['01','02','03','04']},
+{code:'JP-6052',i:'JP',c:'#7A4FD6',n:'João P.',mesas:['05','06','07','08']}];
+const QUESTIONS=[
+{q:'Simpatia',t:'Como você avalia a simpatia de quem te atendeu?',p:'simpatia no atendimento'},
+{q:'Rapidez',t:'O atendimento foi rápido?',p:'atendimento rápido'},
+{q:'Sabor da comida',t:'Como estava o sabor da comida?',p:'comida deliciosa'},
+{q:'Ambiente',t:'Como foi o ambiente do restaurante?',p:'ambiente super agradável'}];
+const params=new URLSearchParams(location.search);
+const mesa=(params.get('mesa')||'').trim();
+const code=(params.get('g')||'').trim().toUpperCase();
+let waiter=WAITERS.find(w=>w.code===code)||WAITERS.find(w=>w.mesas.includes(mesa))||WAITERS[0];
+document.getElementById('rv').style.setProperty('--rc',BIZ.color);
+Review(document.getElementById('rv'),{
+questions:()=>QUESTIONS,
+biz:()=>BIZ,
+waiter:()=>({n:waiter.n,i:waiter.i,c:waiter.c,photo:null,mesa:mesa||waiter.mesas[0]}),
+platforms:()=>[{name:'Google',url:''},{name:'TripAdvisor',url:''}],
+onFinish:()=>{}});
+</script>
+</body></html>
