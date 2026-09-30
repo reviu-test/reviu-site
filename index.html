@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>reviu — Transforme atendimento em nota 5 estrelas no Google</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23066AFF'/%3E%3Cpolygon points='12,3 14.6,8.9 21,9.6 16.2,13.9 17.6,20.2 12,16.9 6.4,20.2 7.8,13.9 3,9.6 9.4,8.9' fill='%23F5B301' transform='translate(3.6 3.6) scale(.7)'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--sf:#F7F8FA;--ink:#12151C;--mut:#5B6270;--ln:#E7E9EE;--br:#066AFF;--brs:#EEF4FF;--star:#F5A524;--ok:#177F55;--oks:#E4F5EC;--r:16px;--pad:clamp(20px,5vw,56px);--font:"Code Pro","Urbanist",system-ui,sans-serif;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth;height:100%}
+body{overflow-x:clip;margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--font);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.01em;line-height:1.14}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
+:focus-visible{outline:2px solid var(--br);outline-offset:3px;border-radius:8px}
+.logo{font-family:var(--font);font-weight:700;font-size:26px;letter-spacing:.01em;color:var(--br)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+.top{display:flex;justify-content:space-between;align-items:center;height:68px}
+.top nav{display:flex;align-items:center;gap:26px;font-size:15px}
+.top nav a:not(.btn){color:var(--mut);text-decoration:none}.top nav a:not(.btn):hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;background:var(--br);color:#fff;text-decoration:none;font-weight:500;border:1px solid var(--br);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px var(--br)}
+.btn.gh{background:transparent;color:var(--ink);border-color:var(--ln)}.btn.gh:hover{border-color:var(--mut);box-shadow:none}
+.btn.sm{min-height:40px;padding:0 18px;font-size:14px}
+.eb{font-size:12px;letter-spacing:.18em;font-weight:500;color:var(--br);text-transform:uppercase}
+.hero{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(48px,9vw,104px) 0}
+.hero::before{content:"";position:absolute;top:-40px;left:0;right:0;margin:0 auto;width:100%;max-width:1000px;height:420px;background:radial-gradient(ellipse at center,var(--brs) 0%,transparent 70%);z-index:-1;opacity:.9}
+.hero h1{font-size:clamp(32px,4.6vw,54px);margin:18px 0 22px}.hero h1 em{font-style:normal;color:var(--br)}
+.hero p{color:var(--mut);font-size:clamp(16px,1.6vw,19px);max-width:30em;margin:0 0 30px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.stage{display:grid;place-items:center;padding:24px 0}
+section{padding:clamp(52px,8vw,100px) 0;border-top:1px solid var(--ln)}
+section h2{font-size:clamp(25px,3.4vw,38px);margin:14px 0 clamp(30px,5vw,52px);max-width:19em}
+.card{background:var(--sf);border-radius:var(--r);padding:26px}
+.card .n{width:34px;height:34px;border-radius:50%;background:var(--brs);color:var(--br);display:grid;place-items:center;font-weight:500;font-size:14px;margin-bottom:18px}
+.card h3{font-size:18px;margin-bottom:8px}.card p{margin:0;color:var(--mut);font-size:15px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.dark{background:var(--sf)}
+.stt{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stt b{display:block;font-size:clamp(28px,3.6vw,44px);font-weight:300;letter-spacing:-.03em;color:var(--br)}.stt span{color:var(--mut);font-size:14px}
+.cta{text-align:center}.cta h2{margin-left:auto;margin-right:auto}.cta .ctas{justify-content:center}
+footer{border-top:1px solid var(--ln);padding:36px 0;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* rcard (review demo) */
+.rcard{width:min(360px,88vw);background:#fff;border-radius:28px;padding:40px 30px 36px;text-align:center;box-shadow:0 26px 64px -32px rgba(18,21,28,.22);border:1px solid var(--ln);display:flex;flex-direction:column}
+.rcard .rb{width:60px;height:60px;border-radius:50%;background:#0E3B2E;color:#fff;display:grid;place-items:center;margin:0 auto 16px;font-size:20px;font-weight:600}
+.rcard .biz{font-size:22px;font-weight:600;margin-bottom:6px}
+.rcard .loc{font-size:14px;color:var(--mut);display:flex;gap:6px;align-items:center;justify-content:center}
+.rcard .loc svg{width:14px;height:14px;flex:none}
+.rcard hr{border:0;border-top:1px solid var(--ln);margin:22px 0 0;width:100%}
+.wrow{display:flex;align-items:center;gap:14px;padding:22px 0;text-align:left}
+.wrow .wp{width:44px;height:44px;border-radius:50%;background:var(--sf);display:grid;place-items:center;flex:none;color:var(--mut)}
+.wrow .wp svg{width:22px;height:22px}
+.wrow small{display:block;font-size:11px;letter-spacing:.08em;color:var(--mut);text-transform:uppercase;font-weight:500}
+.wrow b{font-size:16px;font-weight:600}
+.q{font-size:clamp(20px,2.2vw,25px);line-height:1.32;font-weight:600;margin:26px 0 28px}
+.q em{font-style:normal;color:var(--br)}
+.bigstars{display:flex;justify-content:center;gap:8px}
+.bigstars button{background:none;border:0;padding:2px;cursor:pointer;color:var(--br);min-width:44px;min-height:44px;display:grid;place-items:center;transition:transform .15s}
+.bigstars button:hover{transform:scale(1.08)}
+.bigstars svg{width:34px;height:34px}
+.rlab{text-align:center;font-size:14px;color:var(--mut);min-height:22px;margin:14px 0 0}
+.rcard .tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px}
+.rcard .tags button{font:inherit;font-size:13px;min-height:38px;padding:0 16px;border:1px solid var(--ln);border-radius:99px;background:#fff;color:var(--mut);cursor:pointer}
+.rcard .tags button[aria-pressed=true]{background:var(--brs);border-color:#CFE1FF;color:var(--br)}
+.rcard textarea{width:100%;min-height:76px;border:1px solid var(--ln);border-radius:12px;padding:12px;font:inherit;font-size:14px;margin:18px 0 0;resize:none}
+.rcard textarea:focus{outline:0;border-color:var(--br);box-shadow:0 0 0 3px rgba(6,106,255,.15)}
+.rcard .go{border:0;cursor:pointer;width:100%;font:inherit;font-weight:500;margin-top:24px}
+.rcard .pw{font-size:11px;color:var(--mut);margin-top:20px}
+.pub{background:var(--br);color:#fff}
+.ok{padding:8px 0 2px}.ok .ck{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;font-size:24px}
+.ok.g .ck{background:var(--brs);color:var(--br)}.ok.p .ck{background:var(--oks);color:var(--ok)}
+.ok p{color:var(--mut);font-size:14px;margin:10px 0 20px}.ok .link{background:none;border:0;color:var(--br);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline}
+.qwrap{display:grid;gap:14px;margin-bottom:22px;text-align:left}
+.qrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.qrow>span{font-size:14px;font-weight:600}
+.qs{display:flex;gap:2px}
+.qs button{background:none;border:0;padding:2px;cursor:pointer;color:var(--br);min-width:32px;min-height:32px;display:grid;place-items:center}
+#rv textarea{width:100%;min-height:76px;border:1px solid var(--ln);border-radius:12px;padding:12px;font:inherit;font-size:13.5px;margin:6px 0 0;resize:vertical}
+#rv textarea:focus{outline:0;border-color:var(--br);box-shadow:0 0 0 3px rgba(6,106,255,.15)}
+.ev{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+#rv{margin:0 auto;min-height:600px;box-shadow:0 30px 60px -34px rgba(18,21,28,.35)}
+.fl{display:grid;gap:14px}.fl .card{padding:20px 24px}.fl .card .n{margin-bottom:12px}
+.note{font-size:14px;color:var(--mut);background:var(--sf);border-radius:12px;padding:14px 16px;margin-top:6px}
+
+/* smart-redirect funnel */
+.funil{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;max-width:920px;margin:0 auto}
+.fcol{background:var(--sf);border-radius:var(--r);padding:26px;text-align:left}
+.fcol.pub{background:var(--brs);border:1px solid #CFE1FF}
+.fcol.priv{background:var(--oks);border:1px solid #C6EBD9}
+.fcol .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px}
+.fcol.pub .ic{background:var(--br);color:#fff}.fcol.priv .ic{background:var(--ok);color:#fff}
+.fcol h3{font-size:17px;margin-bottom:6px}.fcol p{margin:0;color:var(--mut);font-size:14px}
+.farrow{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--mut);font-size:13px}
+.farrow svg{width:26px;height:26px}
+.fstart{grid-column:1/-1;background:#fff;border:1px solid var(--ln);border-radius:var(--r);padding:20px 24px;display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:8px}
+.fstart .st{color:var(--star)}.fstart svg{width:22px;height:22px}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:840px;margin:0 auto}
+.plan{border:1px solid var(--ln);border-radius:20px;padding:32px 28px;background:#fff}
+.plan.pro{border-color:var(--br);box-shadow:0 24px 50px -30px rgba(6,106,255,.4);position:relative}
+.plan .tagp{position:absolute;top:-13px;left:28px;background:var(--br);color:#fff;font-size:12px;font-weight:500;padding:4px 12px;border-radius:99px}
+.plan h3{font-size:20px;margin-bottom:6px}.plan .pr{font-size:36px;font-weight:600;margin:12px 0 4px}.plan .pr span{font-size:14px;font-weight:400;color:var(--mut)}
+.plan .ds{color:var(--mut);font-size:14px;margin-bottom:22px}
+.plan ul{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:12px}
+.plan li{display:flex;gap:10px;font-size:14px;color:var(--ink)}.plan li svg{width:18px;height:18px;color:var(--ok);flex:none;margin-top:1px}
+.plan .btn{width:100%}
+@media(max-width:1023px){
+.hero{grid-template-columns:1fr;text-align:center}.hero p{margin-inline:auto}.ctas{justify-content:center}
+.stage{max-width:520px;margin:0 auto;width:100%}
+.steps{grid-template-columns:1fr}.ev{grid-template-columns:1fr}.fl{order:2}
+.funil{grid-template-columns:1fr}.farrow{flex-direction:row;justify-content:center}.farrow svg{transform:rotate(90deg)}
+.plans{grid-template-columns:1fr}}
+@media(max-width:639px){
+.top{height:60px}.top nav a:not(.btn){display:none}
+.ctas{flex-direction:column;align-items:stretch}
+.stt{grid-template-columns:repeat(2,1fr)}}
+/*RV*/
+.rcard{--rc:var(--br);--rct:color-mix(in srgb,var(--rc) 12%,#fff);width:100%;max-width:400px;margin-inline:auto;background:#fff;border-radius:28px;padding:34px 28px 28px;text-align:center;border:1px solid var(--ln);box-shadow:0 26px 64px -32px rgba(18,21,28,.22);display:flex;flex-direction:column;color:var(--ink)}
+.rcard.live{min-height:600px}
+.rcard .rb{width:60px;height:60px;border-radius:50%;background-color:var(--rc);background-size:cover;background-position:center;color:#fff;display:grid;place-items:center;margin:0 auto 14px;font-size:20px;font-weight:700;flex:none}
+.rcard .bn{font-size:21px;font-weight:700;margin-bottom:4px;line-height:1.2}
+.rcard .loc{font-size:13.5px;color:var(--mut);display:flex;gap:6px;align-items:center;justify-content:center}
+.rcard .loc svg{width:14px;height:14px;flex:none}
+.rcard hr{border:0;border-top:1px solid var(--ln);margin:18px 0 0;width:100%}
+.rcard .wrow{display:flex;align-items:center;gap:14px;padding:16px 0;text-align:left}
+.rcard .wp{width:44px;height:44px;border-radius:50%;background-size:cover;background-position:center;display:grid;place-items:center;flex:none;font-weight:700;font-size:14px;color:#fff}
+.rcard .wrow small{display:block;font-size:11px;letter-spacing:.08em;color:var(--mut);text-transform:uppercase;font-weight:600}
+.rcard .wrow b{font-size:16px;font-weight:700}
+.rcard .q{font-size:22px;line-height:1.3;font-weight:700;margin:14px 0 24px;letter-spacing:-.01em}
+.rcard .sub{color:var(--mut);font-size:13.5px;margin:0 0 14px}
+.rcard .pgs{display:grid;gap:5px;margin:20px 0 4px}
+.rcard .pgs i{height:4px;border-radius:4px;background:var(--ln)}.rcard .pgs i.on{background:var(--rc)}
+.rcard .qn{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:600;margin-top:14px}
+.rcard .bigstars{display:flex;justify-content:center;gap:6px}
+.rcard .bigstars button{background:none;border:0;padding:2px;cursor:pointer;color:var(--rc);min-width:46px;min-height:46px;display:grid;place-items:center;transition:transform .15s}
+.rcard .bigstars button:hover{transform:scale(1.1)}
+.rcard .rlab{font-size:14px;color:var(--mut);min-height:22px;margin:10px 0 0}
+.rcard .tgs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px}
+.rcard .tgs button{font:inherit;font-size:13px;min-height:38px;padding:0 16px;border:1px solid var(--ln);border-radius:99px;background:#fff;color:var(--mut);cursor:pointer}
+.rcard .tgs button[aria-pressed=true]{background:var(--rct);border-color:var(--rc);color:var(--rc)}
+.rcard textarea{width:100%;min-height:92px;border:1px solid var(--ln);border-radius:12px;padding:12px;font:inherit;font-size:13.5px;margin-top:8px;resize:vertical;text-align:left;color:var(--ink)}
+.rcard textarea:focus{outline:0;border-color:var(--rc);box-shadow:0 0 0 3px var(--rct)}
+.rcard .cpst{font-size:12.5px;color:var(--rc);margin:8px 0 0;min-height:18px;font-weight:600}
+.rcard .lk{background:none;border:0;color:var(--mut);font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;padding:8px;align-self:center}
+.rcard .how{background:var(--rct);border-radius:12px;padding:12px 14px;text-align:left;font-size:12.5px;margin:6px 0 2px}
+.rcard .how ol{margin:6px 0 0;padding-left:18px;color:var(--mut)}
+.rcard .go{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:14px;padding:0 20px;border-radius:99px;border:1px solid var(--rc);background:var(--rc);color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.rcard .go.gho{background:#fff;color:var(--ink);border-color:var(--ln)}
+.rcard .pw{font-size:11px;color:var(--mut);margin:auto 0 0;padding-top:18px}
+.rcard .ok{margin:auto 0;padding:10px 0}
+.rcard .ok .ck{width:56px;height:56px;border-radius:50%;background:var(--rct);color:var(--rc);display:grid;place-items:center;margin:0 auto 16px;font-size:24px;font-weight:700}
+
+
+.rcard .crow{display:flex;justify-content:space-between;align-items:center;margin:6px 0 0}
+.rcard .crow .cpst{margin:0}.rcard .crow .lk{padding:4px 0}
+.rcard .tip{font-size:12.5px;color:var(--mut);margin:8px 0 6px;line-height:1.5}
+.rcard .sub b{color:var(--ink)}
+
+a[aria-label=reviu]{text-decoration:none;border:0;display:inline-block}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="st" viewBox="0 0 24 24"><polygon points="12,2 14.9,8.6 22,9.3 16.6,14 18.2,21 12,17.3 5.8,21 7.4,14 2,9.3 9.1,8.6"/></symbol>
+<symbol id="ck" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+</defs></svg>
+<header><div class="wrap top">
+<a href="#" aria-label="reviu"><span class="logo">reviu</span></a>
+<nav><a href="#como">Como funciona</a><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a class="btn sm" href="#planos">Começar grátis</a></nav></div></header>
+<main>
+<div class="wrap hero">
+<div><span class="eb">Avaliações inteligentes</span>
+<h1>Menos <em>reclamação pública</em>, mais nota 5 no Google.</h1>
+<p>O reviu ouve cada cliente na hora e decide, sozinho, o melhor caminho: quem sai feliz vai deixar a nota nas plataformas públicas; quem teve um problema é ouvido pelo dono, que resolve rápido e em detalhes.</p>
+<div class="ctas"><a class="btn" href="#planos">Criar conta grátis</a><a class="btn gh" href="#avaliar">Ver demonstração</a></div></div>
+<div class="stage"><a class="rcard" href="#avaliar" aria-label="Testar avaliação" style="text-decoration:none;color:inherit">
+<div class="rb">CB</div><div class="bn">Cantina Bella Vista</div>
+<div class="loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/></svg>Centro, sua cidade</div><hr>
+<div class="wrow"><div class="wp" style="background-color:#0E8F6B">RM</div><div><small>Atendimento</small><b>Rafael M.</b></div></div><hr>
+<h1 class="q">Como foi sua <em>experiência</em> no nosso restaurante?</h1>
+<div class="bigstars" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><use href="#st"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><use href="#st"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><use href="#st"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><use href="#st"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><use href="#st"/></svg>
+</div></a></div>
+</div>
+
+<section id="redirect"><div class="wrap">
+<span class="eb">Redirecionamento inteligente</span>
+<h2>É a média das respostas do cliente que decide para onde a avaliação vai.</h2>
+<div class="funil">
+<div class="fstart"><span class="st" style="display:flex;gap:2px"><svg fill="currentColor"><use href="#st"/></svg><svg fill="currentColor"><use href="#st"/></svg><svg fill="currentColor"><use href="#st"/></svg><svg fill="currentColor"><use href="#st"/></svg><svg fill="none" stroke="currentColor" stroke-width="1.6"><use href="#st"/></svg></span>Cliente avalia o atendimento em segundos</div>
+<div class="fcol pub"><div class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 8-16 8V4z"/></svg></div>
+<h3>Nota 4,5 ou mais</h3><p>O cliente é levado direto para deixar a mesma nota no Google ou no TripAdvisor — em um toque.</p></div>
+<div class="farrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v16M12 20l6-6M12 20l-6-6"/></svg>reviu decide</div>
+<div class="fcol priv"><div class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v12H7l-4 4V5z"/></svg></div>
+<h3>Nota 1 a 3</h3><p>O relato vai direto ao dono, com todos os detalhes, para uma solução mais rápida — antes de virar crítica pública.</p></div>
+</div>
+</div></section>
+
+<section id="avaliar"><div class="wrap"><span class="eb">Experimente agora</span><h2>Veja os dois caminhos na prática.</h2>
+<div class="ev"><div class="rcard live" id="rv" aria-live="polite"></div>
+<div class="fl">
+<div class="card"><div class="n">1</div><h3>Uma pergunta por vez</h3><p>Simpatia, comida, ambiente... o cliente toca numa estrela e a próxima pergunta aparece sozinha.</p></div>
+<div class="card"><div class="n">2</div><h3>O reviu calcula a média e decide</h3><p>Média 4,5 ou mais vira avaliação pública. Abaixo disso, o problema vai direto ao dono para ser resolvido.</p></div>
+<div class="card"><div class="n">3</div><h3>O comentário já sai pronto</h3><p>Na nota alta, copiamos uma sugestão de texto com base nas respostas — o cliente só cola no Google.</p></div>
+<p class="note">Toque nas estrelas do card ao lado para testar os dois caminhos.</p></div></div></div></section>
+
+<section id="como"><div class="wrap"><span class="eb">Como funciona</span><h2>Três passos entre o balcão e a nota pública.</h2>
+<div class="steps">
+<div class="card"><div class="n">1</div><h3>Cadastre e gere os QRs</h3><p>Crie sua conta, adicione mesas e atendentes, e imprima os QR Codes.</p></div>
+<div class="card"><div class="n">2</div><h3>Colete em tempo real</h3><p>Cada avaliação chega ao painel na hora, já separada por atendente e mesa.</p></div>
+<div class="card"><div class="n">3</div><h3>Deixe o redirecionamento agir</h3><p>Boas notas vão para o Google. Notas baixas vão direto ao dono, para resolver rápido.</p></div></div></div></section>
+
+<section id="numeros" class="dark"><div class="wrap"><span class="eb">Resultados</span><h2>O que muda com o redirecionamento inteligente.</h2>
+<div class="stt"><div><b>+1,2</b><span>na nota pública média</span></div><div><b>78%</b><span>dos elogios viram avaliação no Google</span></div><div><b>92%</b><span>das críticas chegam direto ao dono</span></div><div><b>30s</b><span>para o cliente avaliar</span></div></div></div></section>
+
+<section id="recursos"><div class="wrap"><span class="eb">Feito à sua cara</span><h2>Seu card de avaliação, do seu jeito.</h2>
+<div class="feat">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-4-4 3-3-2-6 5"/></svg></div><h3>Foto do restaurante e da equipe</h3><p>Adicione a foto do seu espaço e de cada atendente — o card fica pessoal e o cliente reconhece quem o atendeu.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 17H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5m6 0h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-5"/><path d="M9 12h6"/></svg></div><h3>Escolha as perguntas do card</h3><p>Simpatia, rapidez, ambiente, limpeza... você decide quais etiquetas aparecem para o cliente avaliar.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.8 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.8-4-9s1.5-6.4 4-9z"/></svg></div><h3>Redirecionamento seletivo</h3><p>Só a média 4,5 ou mais segue para o link do Google ou do TripAdvisor que você cadastrar. O resto vai direto ao dono.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="13" height="16" rx="2"/><path d="M8 8h5M8 12h5M8 16h2"/></svg></div><h3>Comentário pronto para colar</h3><p>Quando a média é boa, o reviu já escreve e copia uma sugestão de comentário — o cliente cola, complementa ou escreve do zero.</p></div>
+</div></div></section>
+<section id="planos"><div class="wrap"><span class="eb">Planos</span><h2>Comece grátis. Cresça quando fizer sentido.</h2>
+<div class="plans">
+<div class="plan"><h3>Grátis</h3><p class="ds">Para conhecer o reviu e começar a colher avaliações.</p>
+<div class="pr">R$0<span>/mês</span></div>
+<ul>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>1 unidade e até 3 mesas</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>QR Codes ilimitados</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Até 100 avaliações/mês</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Redirecionamento inteligente básico</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Painel com histórico de 30 dias</li>
+</ul><a class="btn gh" href="#" style="width:100%">Começar grátis</a></div>
+<div class="plan pro"><span class="tagp">Mais completo</span><h3>Pro</h3><p class="ds">Para quem já vive de reputação e quer todos os recursos.</p>
+<div class="pr">R$97<span>/mês</span></div>
+<ul>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Unidades e mesas ilimitadas</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Avaliações ilimitadas</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Redirecionamento avançado (Google e TripAdvisor)</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Ranking de garçons e relatórios completos</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Alertas por WhatsApp e e-mail</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Histórico completo e exportação</li>
+<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#ck"/></svg>Suporte prioritário</li>
+</ul><a class="btn" href="#" style="width:100%">Assinar o Pro</a></div>
+</div></div></section>
+
+<section id="comecar" class="cta"><div class="wrap"><h2>Pronto para transformar atendimento em nota 5?</h2><div class="ctas"><a class="btn" href="#planos">Criar conta grátis</a></div></div></section>
+</main>
+<footer><div class="wrap"><span class="logo">reviu</span><span>© 2026 reviu. Todos os direitos reservados.</span></div></footer>
+<script>
+function Review(el,cfg){
+const L=['Ruim','Regular','Bom','Muito bom','Excelente'];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=v=>v.toFixed(1).replace('.',',');
+const star=f=>`<svg viewBox="0 0 24 24" width="34" height="34" fill="${f?'currentColor':'none'}" stroke="currentColor" stroke-width="1.6"><use href="#st"/></svg>`;
+const pin='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/></svg>';
+let s,lock=false,tok=0;
+async function copyText(t){
+try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t);return true}}catch(e){}
+try{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.focus();ta.select();const ok=document.execCommand('copy');document.body.removeChild(ta);return ok}catch(e){return false}}
+function reset(){tok++;lock=false;s={stage:'q',i:0,rt:[],t:[],c:'',msg:'',avg:0,ok:undefined,plat:'',kind:''};draw()}
+const avg=()=>s.rt.reduce((a,b)=>a+b,0)/s.rt.length;
+function hdr(){const b=cfg.biz(),w=cfg.waiter();
+return `<div class="rb" ${b.photo?`style="background-image:url(${b.photo})"`:''}>${b.photo?'':esc(b.logo)}</div><div class="bn">${esc(b.name)}</div><div class="loc">${pin}${esc(b.addr)}</div><hr>
+<div class="wrow"><div class="wp" style="${w.photo?`background-image:url(${w.photo})`:`background-color:${w.c}`}">${w.photo?'':esc(w.i)}</div><div><small>Atendimento${w.mesa?' · Mesa '+esc(w.mesa):''}</small><b>${esc(w.n)}</b></div></div><hr>`}
+function build(){const Q=cfg.questions(),b=cfg.biz(),w=cfg.waiter();
+const good=Q.map((q,i)=>({p:q.p,r:s.rt[i]})).filter(x=>x.r>=4&&x.p).sort((a,b)=>b.r-a.r).slice(0,3).map(x=>x.p);
+let body=!good.length?'Tudo muito bom':good.length===1?good[0]:good.slice(0,-1).join(', ')+' e '+good[good.length-1];
+body=body[0].toUpperCase()+body.slice(1);
+return `Experiência excelente na ${b.name}! ${body}. Atendimento especial de ${w.n.split(' ')[0]}. Recomendo!`}
+function finish(){s.avg=avg();if(s.avg>=4.5){s.stage='pub';s.msg=build();copyText(s.msg).then(ok=>{s.ok=ok;const e=el.querySelector('.cpst');if(e&&s.stage==='pub')e.textContent=ok?'✓ Copiado':'Toque em Copiar'})}else s.stage='priv'}
+function draw(){const Q=cfg.questions(),N=Q.length;
+if(!N){el.innerHTML='<p class="sub" style="margin:auto">Nenhuma pergunta ativa.</p>';return}
+if(s.stage==='q'&&s.i>=N)s.i=N-1;
+let h=hdr();
+if(s.stage==='q'){const i=s.i,r=s.rt[i]||0;
+h+=`<div class="pgs" style="grid-template-columns:repeat(${N},1fr)">${Q.map((_,k)=>`<i class="${k<=i?'on':''}"></i>`).join('')}</div><div class="qn">Pergunta ${i+1} de ${N}</div><h1 class="q">${esc(Q[i].t)}</h1><div class="bigstars">${[1,2,3,4,5].map(n=>`<button data-r="${n}" aria-label="${n} de 5 estrelas">${star(n<=r)}</button>`).join('')}</div><div class="rlab">${r?L[r-1]:'Toque numa estrela'}</div>${i>0?'<button class="lk" data-act="back">← Voltar</button>':''}<p class="pw">Powered by <b style="color:var(--rc)">reviu</b></p>`}
+else if(s.stage==='pub'){const P=cfg.platforms(),pn=P.map(p=>p.name);
+h+=`<h1 class="q" style="margin:20px 0 6px">Que bom que você gostou!</h1><p class="sub">Sua média foi <b>${fmt(s.avg)}</b>. Preparamos um comentário para você — é só colar.</p><textarea id="msg" aria-label="Comentário sugerido">${esc(s.msg)}</textarea><div class="crow"><span class="cpst">${s.ok===undefined?'Copiando…':s.ok?'✓ Copiado':'Toque em Copiar'}</span><button class="lk" data-act="copy">Copiar de novo</button></div><p class="tip">Já está na sua área de transferência. ${pn.length?`Na página do ${esc(pn.join(' ou '))}, cole`:'É só colar'}, edite se quiser ou escreva o seu.</p>
+${P.length?P.map((p,k)=>`<button class="go ${k?'gho':''}" data-act="plat" data-p="${esc(p.name)}">Abrir ${esc(p.name)}</button>`).join(''):'<button class="go" data-act="plat" data-p="">Concluir</button>'}<button class="lk" data-act="skip">Agora não</button>`}
+else if(s.stage==='priv'){const Qr=Q.map((q,i)=>({q:q.q,r:s.rt[i]}));
+let low=Qr.filter(x=>x.r<=3);if(!low.length)low=Qr.filter(x=>x.r<=4);if(!low.length)low=Qr;
+h+=`<h1 class="q" style="margin:20px 0 6px">O que podemos melhorar?</h1><p class="sub">Seu relato será enviado diretamente ao dono, para resolver de forma mais rápida e detalhada.</p><div class="tgs">${low.map(x=>`<button aria-pressed="${s.t.includes(x.q)}" data-t="${esc(x.q)}">${esc(x.q)}</button>`).join('')}</div><textarea id="cm" placeholder="Conte o que aconteceu (opcional)">${esc(s.c)}</textarea><button class="go" data-act="send">Enviar ao dono</button>`}
+else{const b=cfg.biz();const ck='<div class="ck">✓</div>';
+h+=s.kind==='pub'?`<div class="ok">${ck}<h1 class="q" style="margin:0 0 6px">Tudo certo!</h1><p class="sub">Agora é só colar no ${esc(s.plat||'Google')} e publicar. Obrigado por ajudar a ${esc(b.name)}.</p><button class="lk" data-act="restart">Refazer o Review</button></div>`:s.kind==='skip'?`<div class="ok">${ck}<h1 class="q" style="margin:0 0 6px">Obrigado pelo carinho!</h1><p class="sub">Sua avaliação foi registrada. Esperamos ver você de novo na ${esc(b.name)}.</p><button class="lk" data-act="restart">Refazer o Review</button></div>`:`<div class="ok">${ck}<h1 class="q" style="margin:0 0 6px">Obrigado por nos contar!</h1><p class="sub">Seu relato foi enviado diretamente ao dono da ${esc(b.name)}, que vai cuidar disso para resolver da forma mais rápida e detalhada.</p><button class="lk" data-act="restart">Refazer o Review</button></div>`}
+el.innerHTML=h}
+el.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+if(b.dataset.r){if(lock)return;const i=s.i;s.rt[i]=+b.dataset.r;lock=true;const my=tok;draw();
+setTimeout(()=>{if(my!==tok)return;lock=false;if(i<cfg.questions().length-1)s.i=i+1;else finish();draw()},380);return}
+if(b.dataset.t){const k=s.t.indexOf(b.dataset.t);k<0?s.t.push(b.dataset.t):s.t.splice(k,1);const c=el.querySelector('#cm');if(c)s.c=c.value;draw();return}
+const a=b.dataset.act,ta=el.querySelector('#msg'),cm=el.querySelector('#cm');
+if(a==='back'){s.i=Math.max(0,s.i-1);draw()}
+else if(a==='copy'){copyText(ta.value).then(ok=>{const c=el.querySelector('.cpst');c.textContent=ok?'✓ Copiado':'Selecione o texto e copie'})}
+else if(a==='plat'){s.msg=ta.value;s.plat=b.dataset.p;s.kind='pub';const pf=cfg.platforms().find(x=>x.name===s.plat);cfg.onFinish({kind:'pub',avg:s.avg,text:s.msg,platform:s.plat});if(pf&&pf.url){try{window.open(pf.url,'_blank','noopener')}catch(e){}}s.stage='done';draw()}
+else if(a==='skip'){s.kind='skip';cfg.onFinish({kind:'priv',avg:s.avg,text:'Avaliação positiva, sem comentário público.'});s.stage='done';draw()}
+else if(a==='send'){s.c=cm.value;s.kind='priv';cfg.onFinish({kind:'priv',avg:s.avg,text:s.c.trim()||('Pontos citados: '+(s.t.join(', ')||'nenhum'))});s.stage='done';draw()}
+else if(a==='restart'){reset()}});
+reset();
+return {reset,draw}}
+
+Review(document.getElementById('rv'),{
+questions:()=>[
+{q:'Simpatia',t:'Como você avalia a simpatia de quem te atendeu?',p:'simpatia no atendimento'},
+{q:'Rapidez',t:'O atendimento foi rápido?',p:'atendimento rápido'},
+{q:'Sabor da comida',t:'Como estava o sabor da comida?',p:'comida deliciosa'},
+{q:'Ambiente',t:'Como foi o ambiente do restaurante?',p:'ambiente super agradável'}],
+biz:()=>({name:'Cantina Bella Vista',addr:'Centro, sua cidade',logo:'CB',photo:null}),
+waiter:()=>({n:'Rafael M.',i:'RM',c:'#0E8F6B',photo:null,mesa:'12'}),
+platforms:()=>[{name:'Google',url:''},{name:'TripAdvisor',url:''}],
+onFinish:()=>{}});
+</script></body></html>
